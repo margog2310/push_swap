@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
+/*   By: margo <margo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 01:13:34 by mganchev          #+#    #+#             */
-/*   Updated: 2024/07/28 01:58:34 by mganchev         ###   ########.fr       */
+/*   Updated: 2024/07/28 22:08:14 by margo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@ void	initialise_stack(t_stack **stack, int argc, char *argv[])
 		args = ft_split(argv[1], " ");
 	else
 		args = argv;
+	if (!is_number(args))
+	{
+		free_arr(args);
+		ft_printf("Error\n");
+	}
 	while (--argc)
 		ft_lstadd_back(stack, ft_lstnew(ft_atoi(args[argc])));
     if (argc == 2)

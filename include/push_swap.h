@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
+/*   By: margo <margo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 00:56:43 by mganchev          #+#    #+#             */
-/*   Updated: 2024/07/28 01:51:02 by mganchev         ###   ########.fr       */
+/*   Updated: 2024/07/28 22:02:55 by margo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "libft.h"
+# include "stdbool.h"
 
 typedef struct s_stack
 {
@@ -21,7 +22,11 @@ typedef struct s_stack
 	struct s_stack	*next;
 }					t_stack;
 
-void				free_arr(char **arr);
+// args
+bool				is_number(char **args);
+// stack
 void				initialise_stack(t_stack **stack, int argc, char *argv[]);
+// utils
+void				free_arr(char **arr);
 
 #endif

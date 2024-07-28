@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+         #
+#    By: margo <margo@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/20 18:08:20 by mganchev          #+#    #+#              #
-#    Updated: 2024/07/28 01:03:56 by mganchev         ###   ########.fr        #
+#    Updated: 2024/07/28 22:12:55 by margo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,9 +22,9 @@ CFLAGS = -Wall -Werror -Wextra -g3
 SRCDIR =./sources
 OBJDIR =./build
 
-SRCS = $(SRCDIR)/push.c
+SRCS = $(SRCDIR)/main.c $(SRCDIR)/swap.c $(SRCDIR)/check_args.c $(SRCDIR)/utils.c
 
-OBJS = $(OBJDIR)/push.o
+OBJS = $(OBJDIR)/main.o $(OBJDIR)/swap.o $(SRCDIR)check_args.o $(SRCDIR)utils.o
 
 all: $(OBJDIR) $(NAME)
 
