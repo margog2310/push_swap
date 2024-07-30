@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: margo <margo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 00:56:43 by mganchev          #+#    #+#             */
-/*   Updated: 2024/07/28 22:02:55 by margo            ###   ########.fr       */
+/*   Updated: 2024/07/30 18:36:49 by mganchev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,24 @@ typedef struct s_stack
 bool				is_number(char **args);
 // stack
 void				initialise_stack(t_stack **stack, int argc, char *argv[]);
+// instructions
+int					swap(t_stack **stack);
+int					sa(t_stack **stack_a);
+int					sb(t_stack **stack_b);
+int					ss(t_stack **stack_a, t_stack **stack_b);
+int					push(t_stack **stack_to, t_stack **stack_from);
+int					pa(t_stack **stack_a, t_stack **stack_b);
+int					pb(t_stack **stack_a, t_stack **stack_b);
+int					rotate(t_stack **stack);
+int					ra(t_stack **stack_a);
+int					rb(t_stack **stack_b);
+int					rr(t_stack **stack_a, t_stack **stack_b);
+int					reverse_rotate(t_stack **stack);
+int					rra(t_stack **stack_a);
+int					rrb(t_stack **stack_b);
+int					rrr(t_stack **stack_a, t_stack **stack_b);
 // utils
 void				free_arr(char **arr);
+void				handle_error(char *error);
 
 #endif

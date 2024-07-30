@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: margo <margo@student.42.fr>                +#+  +:+       +#+         #
+#    By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/20 18:08:20 by mganchev          #+#    #+#              #
-#    Updated: 2024/07/28 22:12:55 by margo            ###   ########.fr        #
+#    Updated: 2024/07/30 18:40:57 by mganchev         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,9 +22,13 @@ CFLAGS = -Wall -Werror -Wextra -g3
 SRCDIR =./sources
 OBJDIR =./build
 
-SRCS = $(SRCDIR)/main.c $(SRCDIR)/swap.c $(SRCDIR)/check_args.c $(SRCDIR)/utils.c
+SRCS = $(SRCDIR)/main.c $(SRCDIR)/instructions/push.c $(SRCDIR)/instructions/swap.c \
+$(SRCDIR)/instructions/rotate.c $(SRCDIR)/instructions/reverse_rotate.c $(SRCDIR)/check_args.c \
+$(SRCDIR)/sort.c $(SRCDIR)/utils.c
 
-OBJS = $(OBJDIR)/main.o $(OBJDIR)/swap.o $(SRCDIR)check_args.o $(SRCDIR)utils.o
+OBJS = $(OBJDIR)/main.o $(OBJDIR)/instructions/push.o $(OBJDIR)/instructions/swap.o \
+$(OBJDIR)/instructions/rotate.o $(OBJDIR)/instructions/reverse_rotate.o $(OBJDIR)/check_args.o \
+$(OBJDIR)/sort.o $(OBJDIR)utils.o
 
 all: $(OBJDIR) $(NAME)
 

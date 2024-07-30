@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: margo <margo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 21:39:12 by margo             #+#    #+#             */
-/*   Updated: 2024/07/28 22:09:55 by margo            ###   ########.fr       */
+/*   Updated: 2024/07/30 18:44:47 by mganchev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,3 +38,16 @@ bool	is_number(char **args)
 	return (true);
 }
 
+bool	is_sorted(t_stack **stack)
+{
+	t_stack	*temp;
+
+	temp = *stack;
+	while (temp)
+	{
+		if (temp->next->value > temp->value)
+			return (false);
+		temp = temp->next;
+	}
+	return (true);
+}
