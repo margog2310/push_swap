@@ -6,7 +6,7 @@
 #    By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/20 18:08:20 by mganchev          #+#    #+#              #
-#    Updated: 2024/07/30 18:40:57 by mganchev         ###   ########.fr        #
+#    Updated: 2024/07/31 00:06:28 by mganchev         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,11 +24,11 @@ OBJDIR =./build
 
 SRCS = $(SRCDIR)/main.c $(SRCDIR)/instructions/push.c $(SRCDIR)/instructions/swap.c \
 $(SRCDIR)/instructions/rotate.c $(SRCDIR)/instructions/reverse_rotate.c $(SRCDIR)/check_args.c \
-$(SRCDIR)/sort.c $(SRCDIR)/utils.c
+$(SRCDIR)/sort.c $(SRCDIR)/utils.c $(SRCDIR)/misc.c
 
 OBJS = $(OBJDIR)/main.o $(OBJDIR)/instructions/push.o $(OBJDIR)/instructions/swap.o \
 $(OBJDIR)/instructions/rotate.o $(OBJDIR)/instructions/reverse_rotate.o $(OBJDIR)/check_args.o \
-$(OBJDIR)/sort.o $(OBJDIR)utils.o
+$(OBJDIR)/sort.o $(OBJDIR)/utils.o $(OBJDIR)misc.o
 
 all: $(OBJDIR) $(NAME)
 

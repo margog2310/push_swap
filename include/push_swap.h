@@ -6,7 +6,7 @@
 /*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 00:56:43 by mganchev          #+#    #+#             */
-/*   Updated: 2024/07/30 18:36:49 by mganchev         ###   ########.fr       */
+/*   Updated: 2024/07/31 00:04:34 by mganchev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,15 @@ int					reverse_rotate(t_stack **stack);
 int					rra(t_stack **stack_a);
 int					rrb(t_stack **stack_b);
 int					rrr(t_stack **stack_a, t_stack **stack_b);
+// sort
+int					sort_3(t_stack **stack);
+int					sort_4(t_stack **stack_a, t_stack **stack_b);
+int					sort_5(t_stack **stack_a, t_stack **stack_b);
+int					simple_sort(t_stack **stack_a, t_stack **stack_b, int size);
 // utils
+int					find_min(t_stack **stack);
+int					find_max(t_stack **stack);
+// misc
 void				free_arr(char **arr);
 void				handle_error(char *error);
 

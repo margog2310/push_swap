@@ -5,41 +5,26 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/30 23:10:12 by mganchev          #+#    #+#             */
-/*   Updated: 2024/07/30 23:37:57 by mganchev         ###   ########.fr       */
+/*   Created: 2024/07/28 01:44:45 by mganchev          #+#    #+#             */
+/*   Updated: 2024/07/30 23:09:43 by mganchev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	find_min(t_stack **stack)
+void	free_arr(char **arr)
 {
-    int		min;
-    t_stack	*temp;
+	int	i;
 
-    temp = *stack;
-    min = temp->value;
-    while (temp)
-    {
-        if (temp->value < min)
-            min = temp->value;
-        temp = temp->next;
-    }
-    return (min);
+	i = 0;
+	while (arr[i])
+		i++;
+	while (i >= 0)
+		free(arr[--i]);
 }
 
-int	find_max(t_stack **stack)
+void handle_error(char *error)
 {
-	int		max;
-	t_stack	*temp;
-
-	temp = *stack;
-	max = temp->value;
-	while (temp)
-	{
-		if (temp->value > max)
-			max = temp->value;
-		temp = temp->next;
-	}
-	return (max);
+	ft_putendl_fd(error, 1);
+	exit(0);
 }

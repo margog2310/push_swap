@@ -6,7 +6,7 @@
 /*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 21:39:12 by margo             #+#    #+#             */
-/*   Updated: 2024/07/30 18:44:47 by mganchev         ###   ########.fr       */
+/*   Updated: 2024/07/30 23:38:35 by mganchev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ bool	is_sorted(t_stack **stack)
 	temp = *stack;
 	while (temp)
 	{
-		if (temp->next->value > temp->value)
+		if (temp->value > temp->next->value)
 			return (false);
 		temp = temp->next;
 	}
