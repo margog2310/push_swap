@@ -6,7 +6,7 @@
 /*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 17:29:44 by mganchev          #+#    #+#             */
-/*   Updated: 2024/07/30 17:47:33 by mganchev         ###   ########.fr       */
+/*   Updated: 2024/07/31 18:33:20 by mganchev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	push(t_stack **stack_to, t_stack **stack_from)
 	t_stack	*head_to;
 	t_stack	*head_from;
 
-	if (ft_lstsize(*stack_from) == 0)
+	if (ft_stacksize(*stack_from) == 0)
 		return (-1);
 	head_to = *stack_to;
 	head_from = *stack_from;

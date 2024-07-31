@@ -6,7 +6,7 @@
 /*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 00:56:31 by mganchev          #+#    #+#             */
-/*   Updated: 2024/07/30 18:02:09 by mganchev         ###   ########.fr       */
+/*   Updated: 2024/07/31 18:34:24 by mganchev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	swap(t_stack **stack)
 	t_stack	*next;
 	int		temp;
 
-	if (ft_lstsize(*stack) <= 1)
+	if (ft_stacksize(*stack) <= 1)
 		return (-1);
 	head = *stack;
 	next = head->next;
@@ -48,7 +48,7 @@ int	sb(t_stack **stack_b)
 
 int	ss(t_stack **stack_a, t_stack **stack_b)
 {
-	if (ft_lstsize(*stack_a) < 2 || ft_lstsize(*stack_b) < 2)
+	if (ft_stacksize(*stack_a) < 2 || ft_stacksize(*stack_b) < 2)
 		return (-1);
 	swap(stack_a);
 	swap(stack_b);

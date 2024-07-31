@@ -6,43 +6,40 @@
 /*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 01:13:34 by mganchev          #+#    #+#             */
-/*   Updated: 2024/07/30 17:02:31 by mganchev         ###   ########.fr       */
+/*   Updated: 2024/07/31 22:51:56 by mganchev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	initialise_stack(t_stack **stack, int argc, char *argv[])
-{
-	char	**args;
-
-	if (argc == 2)
-		args = ft_split(argv[1], " ");
-	else
-		args = argv;
-	if (!is_number(args))
-	{
-		free_arr(args);
-		ft_printf("Error\n");
-	}
-	while (--argc)
-		ft_lstadd_back(stack, ft_lstnew(ft_atoi(args[argc])));
-    if (argc == 2)
-        free_arr(args);
-}
-
 int	main(int argc, char *argv[])
 {
-	t_stack	**a;
-	t_stack	**b;
+	t_stack	**stack_a;
+	t_stack	**stack_b;
 
 	if (argc < 2)
 		return (-1);
-	// check if args are valid
-    t_stack *a = NULL;
-    t_stack *b = NULL;
-    initialise_stack(a, argc, argv);
-    // check if stack a is already sorted
-    // if yes, free stacks and return stack a
-    // if no, initialise stack b and continue to sorting
+	stack_a = malloc(sizeof(t_stack));
+	stack_b = malloc(sizeof(t_stack));
+	*stack_a = NULL;
+	*stack_b = NULL;
+	initialise_stack(stack_a, argc, argv);
+	if (is_sorted(stack_a))
+	{
+		free_stack(stack_a);
+		free_stack(stack_b);
+		exit(EXIT_SUCCESS);
+	}
+	simple_sort(stack_a, stack_b, ft_stacksize(*stack_a));
+	print_stack(stack_a);
+	free_stack(stack_a);
+	free_stack(stack_b);
+	exit(EXIT_SUCCESS);
 }
+/*
+	TO DO:
+			1. use index of elements instead of values for sorting
+			2. start implementing sorting algorithm
+			3. testing + optimisation
+			4. norminette(!) + check memory leaks
+*/
