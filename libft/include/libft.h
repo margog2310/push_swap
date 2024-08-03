@@ -6,7 +6,7 @@
 /*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 16:00:24 by mganchev          #+#    #+#             */
-/*   Updated: 2024/07/25 13:49:37 by mganchev         ###   ########.fr       */
+/*   Updated: 2024/08/02 23:07:48 by mganchev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int					ft_putstr_fd(char *s, int fd);
 int					ft_putnbr_fd(int n, int fd);
 int					ft_putunbr_fd(int n, int fd);
 int					ft_printf(const char *fmt, ...);
+int					ft_strcmp(const char *s1, const char *s2);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
 char				*ft_itoa(int n);

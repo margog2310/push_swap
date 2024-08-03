@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   misc.c                                             :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/28 01:44:45 by mganchev          #+#    #+#             */
-/*   Updated: 2024/08/02 23:06:30 by mganchev         ###   ########.fr       */
+/*   Created: 2024/08/02 23:06:41 by mganchev          #+#    #+#             */
+/*   Updated: 2024/08/02 23:07:00 by mganchev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	free_arr(char **arr)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	int	i;
-
-	i = 0;
-	while (arr[i])
-		i++;
-	while (i--)
-		free(arr[i]);
-}
-
-void handle_error(char *error)
-{
-	ft_putendl_fd(error, 1);
-	exit(0);
+	while (*s1 && (*s1 == *s2))
+	{
+		s1++;
+		s2++;
+	}
+	return (*(const unsigned char *)s1 - *(const unsigned char *)s2);
 }

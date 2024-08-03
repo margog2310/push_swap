@@ -6,7 +6,7 @@
 /*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 00:56:31 by mganchev          #+#    #+#             */
-/*   Updated: 2024/07/31 18:34:24 by mganchev         ###   ########.fr       */
+/*   Updated: 2024/08/02 21:59:04 by mganchev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,28 +30,30 @@ int	swap(t_stack **stack)
 	return (0);
 }
 
-int	sa(t_stack **stack_a)
+int	sa(t_stack **stack_a, t_stack **stack_b, t_list **ops)
 {
+	(void)stack_b;
 	if (swap(stack_a) == -1)
 		return (-1);
-	ft_putendl_fd("sa", 1);
+	apply_op(ops, "sa");
 	return (0);
 }
 
-int	sb(t_stack **stack_b)
+int	sb(t_stack **stack_b, t_stack **stack_a, t_list **ops)
 {
+	(void)stack_a;
 	if (swap(stack_b) == -1)
 		return (-1);
-	ft_putendl_fd("sb", 1);
+	apply_op(ops, "sb");
 	return (0);
 }
 
-int	ss(t_stack **stack_a, t_stack **stack_b)
+int	ss(t_stack **stack_a, t_stack **stack_b, t_list **ops)
 {
 	if (ft_stacksize(*stack_a) < 2 || ft_stacksize(*stack_b) < 2)
 		return (-1);
 	swap(stack_a);
 	swap(stack_b);
-	ft_putendl_fd("ss", 1);
+	apply_op(ops, "ss");
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 17:29:44 by mganchev          #+#    #+#             */
-/*   Updated: 2024/07/31 18:33:20 by mganchev         ###   ########.fr       */
+/*   Updated: 2024/08/02 21:52:23 by mganchev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,18 @@ int	push(t_stack **stack_to, t_stack **stack_from)
 	return (0);
 }
 
-int	pa(t_stack **stack_a, t_stack **stack_b)
+int	pa(t_stack **stack_a, t_stack **stack_b, t_list **ops)
 {
 	if (push(stack_a, stack_b) == -1)
 		return (-1);
-	ft_putendl_fd("pa", 1);
+	apply_op(ops, "pa");
 	return (0);
 }
 
-int	pb(t_stack **stack_a, t_stack **stack_b)
+int	pb(t_stack **stack_a, t_stack **stack_b, t_list **ops)
 {
 	if (push(stack_b, stack_a) == -1)
 		return (-1);
-	ft_putendl_fd("pb", 1);
+	apply_op(ops, "pb");
 	return (0);
 }

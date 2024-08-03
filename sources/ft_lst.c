@@ -6,7 +6,7 @@
 /*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 18:19:58 by mganchev          #+#    #+#             */
-/*   Updated: 2024/07/31 18:39:13 by mganchev         ###   ########.fr       */
+/*   Updated: 2024/08/03 01:39:51 by mganchev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_stack	*ft_stacknew(int value)
 	if (!new)
 		return (NULL);
 	new->value = value;
-	new->index = -1;
+	new->rank = -1;
 	new->next = NULL;
 	return (new);
 }

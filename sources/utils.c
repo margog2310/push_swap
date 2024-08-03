@@ -6,7 +6,7 @@
 /*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 23:10:12 by mganchev          #+#    #+#             */
-/*   Updated: 2024/07/31 21:46:08 by mganchev         ###   ########.fr       */
+/*   Updated: 2024/08/03 00:05:46 by mganchev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,18 @@ void	print_stack(t_stack **stack)
 	while (head)
 	{
 		ft_printf("%d\n", head->value);
+		head = head->next;
+	}
+}
+
+void	print_list(t_list **lst)
+{
+	t_list *head;
+
+	head = *lst;
+	while (head)
+	{
+		ft_printf("%s\n", head->content);
 		head = head->next;
 	}
 }

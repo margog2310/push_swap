@@ -6,7 +6,7 @@
 /*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 01:13:34 by mganchev          #+#    #+#             */
-/*   Updated: 2024/07/31 22:51:56 by mganchev         ###   ########.fr       */
+/*   Updated: 2024/08/02 23:25:05 by mganchev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	main(int argc, char *argv[])
 		free_stack(stack_b);
 		exit(EXIT_SUCCESS);
 	}
-	simple_sort(stack_a, stack_b, ft_stacksize(*stack_a));
+	sort_stack(stack_a, stack_b);
 	print_stack(stack_a);
 	free_stack(stack_a);
 	free_stack(stack_b);

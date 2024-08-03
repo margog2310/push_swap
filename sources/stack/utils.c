@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   misc.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/28 01:44:45 by mganchev          #+#    #+#             */
-/*   Updated: 2024/08/02 23:06:30 by mganchev         ###   ########.fr       */
+/*   Created: 2024/08/03 01:24:15 by mganchev          #+#    #+#             */
+/*   Updated: 2024/08/03 01:44:15 by mganchev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	free_arr(char **arr)
+int get_value(t_stack **stack, int rank)
 {
-	int	i;
+    int i;
+    t_stack *head;
 
-	i = 0;
-	while (arr[i])
-		i++;
-	while (i--)
-		free(arr[i]);
-}
-
-void handle_error(char *error)
-{
-	ft_putendl_fd(error, 1);
-	exit(0);
+    i = 0;
+    head = *stack;
+    while (head)
+    {
+        if (head->rank == rank)
+            return (head->value);
+        head = head->next;
+    }
+    return (-1);
 }

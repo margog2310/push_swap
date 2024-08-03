@@ -6,7 +6,7 @@
 /*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 18:03:44 by mganchev          #+#    #+#             */
-/*   Updated: 2024/07/31 18:33:48 by mganchev         ###   ########.fr       */
+/*   Updated: 2024/08/02 22:02:50 by mganchev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,28 +32,30 @@ int	reverse_rotate(t_stack **stack)
 	return (0);
 }
 
-int	rra(t_stack **stack_a)
+int	rra(t_stack **stack_a, t_stack **stack_b, t_list **ops)
 {
+	(void)stack_b;
 	if (reverse_rotate(stack_a) == -1)
 		return (-1);
-	ft_putendl_fd("rra", 1);
+	apply_op(ops, "rra");
 	return (0);
 }
 
-int	rrb(t_stack **stack_b)
+int	rrb(t_stack **stack_b, t_stack **stack_a, t_list **ops)
 {
+	(void)stack_a;
 	if (reverse_rotate(stack_b) == -1)
 		return (-1);
-	ft_putendl_fd("rrb", 1);
+	apply_op(ops, "rrb");
 	return (0);
 }
 
-int	rrr(t_stack **stack_a, t_stack **stack_b)
+int	rrr(t_stack **stack_a, t_stack **stack_b, t_list **ops)
 {
 	if (ft_stacksize(*stack_a) < 2 || ft_stacksize(*stack_b) < 2)
 		return (-1);
 	reverse_rotate(stack_a);
 	reverse_rotate(stack_b);
-	ft_putendl_fd("rrr", 1);
+	apply_op(ops, "rrr");
 	return (0);
 }
