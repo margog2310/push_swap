@@ -6,7 +6,7 @@
 /*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 18:03:44 by mganchev          #+#    #+#             */
-/*   Updated: 2024/08/02 22:02:50 by mganchev         ###   ########.fr       */
+/*   Updated: 2024/08/03 21:36:33 by mganchev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,30 +32,28 @@ int	reverse_rotate(t_stack **stack)
 	return (0);
 }
 
-int	rra(t_stack **stack_a, t_stack **stack_b, t_list **ops)
+int	rra(t_data *data)
 {
-	(void)stack_b;
-	if (reverse_rotate(stack_a) == -1)
+	if (reverse_rotate(data->a) == -1)
 		return (-1);
-	apply_op(ops, "rra");
+	apply_op(data->ops, "rra");
 	return (0);
 }
 
-int	rrb(t_stack **stack_b, t_stack **stack_a, t_list **ops)
+int	rrb(t_data *data)
 {
-	(void)stack_a;
-	if (reverse_rotate(stack_b) == -1)
+	if (reverse_rotate(data->b) == -1)
 		return (-1);
-	apply_op(ops, "rrb");
+	apply_op(data->ops, "rrb");
 	return (0);
 }
 
-int	rrr(t_stack **stack_a, t_stack **stack_b, t_list **ops)
+int	rrr(t_data *data)
 {
-	if (ft_stacksize(*stack_a) < 2 || ft_stacksize(*stack_b) < 2)
+	if (ft_stacksize(*data->a) < 2 || ft_stacksize(*data->b) < 2)
 		return (-1);
-	reverse_rotate(stack_a);
-	reverse_rotate(stack_b);
-	apply_op(ops, "rrr");
+	reverse_rotate(data->a);
+	reverse_rotate(data->b);
+	apply_op(data->ops, "rrr");
 	return (0);
 }

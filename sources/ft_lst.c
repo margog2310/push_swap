@@ -6,7 +6,7 @@
 /*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 18:19:58 by mganchev          #+#    #+#             */
-/*   Updated: 2024/08/03 01:39:51 by mganchev         ###   ########.fr       */
+/*   Updated: 2024/08/03 23:50:50 by mganchev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,14 @@ void	ft_stackadd_back(t_stack **stack, t_stack *new)
 	if (*stack == NULL)
 	{
 		*stack = new;
+		new->prev = NULL;
 		return ;
 	}
 	last = *stack;
 	while (last->next != NULL)
 		last = last->next;
 	last->next = new;
+	new->prev = last;
 }
 
 t_stack	*ft_stacklast(t_stack *stack)
@@ -81,7 +83,7 @@ int	ft_stacksize(t_stack *stack)
 void	free_stack(t_stack **stack)
 {
 	t_stack	*tmp;
-	t_stack *head;
+	t_stack	*head;
 
 	if (!stack)
 		return ;
@@ -89,7 +91,7 @@ void	free_stack(t_stack **stack)
 	while (head)
 	{
 		tmp = head;
-		head = head->next;	
+		head = head->next;
 		free(tmp);
 	}
 	free(stack);

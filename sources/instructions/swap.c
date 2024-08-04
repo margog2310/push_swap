@@ -6,7 +6,7 @@
 /*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 00:56:31 by mganchev          #+#    #+#             */
-/*   Updated: 2024/08/02 21:59:04 by mganchev         ###   ########.fr       */
+/*   Updated: 2024/08/03 21:39:15 by mganchev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,30 +30,28 @@ int	swap(t_stack **stack)
 	return (0);
 }
 
-int	sa(t_stack **stack_a, t_stack **stack_b, t_list **ops)
+int	sa(t_data *data)
 {
-	(void)stack_b;
-	if (swap(stack_a) == -1)
+	if (swap(data->a) == -1)
 		return (-1);
-	apply_op(ops, "sa");
+	apply_op(data->ops, "sa");
 	return (0);
 }
 
-int	sb(t_stack **stack_b, t_stack **stack_a, t_list **ops)
+int	sb(t_data *data)
 {
-	(void)stack_a;
-	if (swap(stack_b) == -1)
+	if (swap(data->b) == -1)
 		return (-1);
-	apply_op(ops, "sb");
+	apply_op(data->ops, "sb");
 	return (0);
 }
 
-int	ss(t_stack **stack_a, t_stack **stack_b, t_list **ops)
+int	ss(t_data *data)
 {
-	if (ft_stacksize(*stack_a) < 2 || ft_stacksize(*stack_b) < 2)
+	if (ft_stacksize(data->a) < 2 || ft_stacksize(data->b) < 2)
 		return (-1);
-	swap(stack_a);
-	swap(stack_b);
-	apply_op(ops, "ss");
+	swap(data->a);
+	swap(data->b);
+	apply_op(data->ops, "ss");
 	return (0);
 }

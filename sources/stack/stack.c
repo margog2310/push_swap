@@ -6,13 +6,44 @@
 /*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 16:43:53 by mganchev          #+#    #+#             */
-/*   Updated: 2024/08/03 01:40:24 by mganchev         ###   ########.fr       */
+/*   Updated: 2024/08/03 21:31:52 by mganchev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	initialise_stack(t_stack **stack, int argc, char *argv[])
+void	init_data(t_data *data, int argc, char *argv[])
+{
+	data->a = malloc(sizeof(t_stack));
+	data->b = malloc(sizeof(t_stack));
+	fill_stack(data->a, argc, argv);
+	data->b = NULL;
+	data->ops = NULL;
+}
+
+void	index_stack(t_stack **stack)
+{
+	t_stack	*head;
+	t_stack	*current;
+	int		rank;
+
+	current = *stack;
+	while (current)
+	{
+		rank = 1;
+		head = *stack;
+		while (head)
+		{
+			if (head->value < current->value)
+				rank++;
+			head = head->next;
+		}
+		current->rank = rank;
+		current = current->next;
+	}
+}
+
+void	fill_stack(t_stack **stack, int argc, char *argv[])
 {
 	int		i;
 	char	**args;
@@ -38,26 +69,4 @@ void	initialise_stack(t_stack **stack, int argc, char *argv[])
 	index_stack(stack);
 	if (argc == 2)
 		free_arr(args);
-}
-
-void	index_stack(t_stack **stack)
-{
-	t_stack	*head;
-	t_stack	*current;
-	int		rank;
-
-	current = *stack;
-	while (current)
-	{
-		rank = 1;
-		head = *stack;
-		while (head)
-		{
-			if (head->value < current->value)
-				rank++;
-			head = head->next;
-		}
-		current->rank = rank;
-		current = current->next;
-	}
 }

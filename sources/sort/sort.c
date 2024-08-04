@@ -6,7 +6,7 @@
 /*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 21:09:25 by mganchev          #+#    #+#             */
-/*   Updated: 2024/08/03 00:05:29 by mganchev         ###   ########.fr       */
+/*   Updated: 2024/08/03 21:47:55 by mganchev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,16 +73,14 @@ void	optimise(t_list **ops)
 	}
 }
 
-int	sort_stack(t_stack **stack_a, t_stack **stack_b)
+int	sort_stack(t_data *data)
 {
-	t_list	*ops;
 	int		size;
 
-	ops = NULL;
-	size = ft_stacksize(*stack_a);
+	size = ft_stacksize(data->a);
 	if (size <= 5)
-		simple_sort(stack_a, stack_b, size, &ops);
-	optimise(&ops);
-	print_list(&ops);
+		simple_sort(data, size);
+	optimise(&data->ops);
+	print_list(&data->ops);
 	return (0);
 }
