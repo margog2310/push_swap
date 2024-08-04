@@ -6,7 +6,7 @@
 /*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 17:51:28 by mganchev          #+#    #+#             */
-/*   Updated: 2024/08/04 02:14:30 by mganchev         ###   ########.fr       */
+/*   Updated: 2024/08/04 18:47:11 by mganchev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	sort_3_TA(t_chunk *to_sort, t_data *data)
 		sa(data);
 		rra(data);
 	}
+	to_sort->position = TOP_A;
 	chunk_sort_2(to_sort, data);
 }
 

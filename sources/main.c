@@ -6,7 +6,7 @@
 /*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 01:13:34 by mganchev          #+#    #+#             */
-/*   Updated: 2024/08/04 02:04:48 by mganchev         ###   ########.fr       */
+/*   Updated: 2024/08/04 18:13:48 by mganchev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int argc, char *argv[])
 	if (argc < 2)
 		return (-1);
 	init_data(data, argc, argv);
-	if (is_sorted(data->a))
+	if (is_sorted(data->a, 'a'))
 	{
 		free_stack(data->a);
 		free_stack(data->b);

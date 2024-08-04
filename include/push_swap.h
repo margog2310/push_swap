@@ -6,7 +6,7 @@
 /*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 00:56:43 by mganchev          #+#    #+#             */
-/*   Updated: 2024/08/04 02:21:50 by mganchev         ###   ########.fr       */
+/*   Updated: 2024/08/04 18:53:40 by mganchev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,9 @@ int					rrr(t_data *data);
 // chunks
 t_chunk				*init_chunk(int size, enum pos position);
 t_split				first_split(t_data *data);
+void				assign_position(t_chunk *to_sort, t_split *split);
+void				split_chunk(t_chunk *to_sort, t_split *split);
+void				sort_chunk(t_chunk *to_sort, t_data *data);
 void				to_top(t_chunk *to_sort, t_data *data);
 void				move_TA(t_data *data, enum pos dest);
 void				move_BA(t_data *data, enum pos dest);
@@ -100,11 +103,15 @@ int					chunk_max(t_chunk *chunk, t_data *data);
 bool				chunk_is_sorted(t_chunk *chunk, t_data *data);
 t_stack				*return_stack(t_data *data, enum pos position);
 // sort
-bool				is_sorted(t_stack **stack);
-int					sort_3(t_data *data);
-int					sort_4(t_data *data);
-int					sort_5(t_data *data);
-int					simple_sort(t_data *data, int size);
+bool				is_sorted(t_stack **stack, char key);
+int					sort_3_a(t_data *data);
+int					sort_4_a(t_data *data);
+int					sort_5_a(t_data *data);
+int					sort_3_b(t_data *data);
+int					sort_4_b(t_data *data);
+int					sort_5_b(t_data *data);
+int					simple_sort_b(t_data *data, int size);
+int					simple_sort_a(t_data *data, int size);
 int					sort_stack(t_data *data);
 void				chunk_sort_1(t_chunk *to_sort, t_data *data);
 void				chunk_sort_2(t_chunk *to_sort, t_data *data);

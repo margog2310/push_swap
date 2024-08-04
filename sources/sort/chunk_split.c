@@ -6,7 +6,7 @@
 /*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 00:41:28 by mganchev          #+#    #+#             */
-/*   Updated: 2024/08/04 02:22:00 by mganchev         ###   ########.fr       */
+/*   Updated: 2024/08/04 18:59:12 by mganchev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,27 +20,58 @@ t_chunk	*init_chunk(int size, enum pos position)
 	chunk->position = position;
 	return (chunk);
 }
-// not in header
-void	split_chunk(t_data *data, int chunk_size)
-{
-	int	i;
 
-	i = 0;
-	while (i <= ft_stacksize(*data->a))
+void	first_split(t_data *data)
+{
+	t_chunk	first_chunk;
+
+	first_chunk.position = TOP_A;
+	first_chunk.size = ft_stacksize(*data->a);
+	sort_chunk(&first_chunk, data);
+}
+
+void	assign_position(t_chunk *to_sort, t_split *split)
+{
+	if (to_sort->position == TOP_A)
 	{
-		if ((*data->a)->rank <= chunk_size)
-			move_to(data, TOP_A, BOTTOM_B);
-		else if ((*data->a)->rank <= (chunk_size * 2))
-			move_to(data, TOP_A, TOP_B);
-		else
-			move_to(data, TOP_A, BOTTOM_A);
-		i++;
+		split->max->position = BOTTOM_A;
+		split->mid->position = TOP_B;
+		split->min->position = BOTTOM_B;
+	}
+	else if (to_sort->position == BOTTOM_A)
+	{
+		split->max->position = TOP_A;
+		split->mid->position = TOP_B;
+		split->min->position = BOTTOM_B;
+	}
+	else if (to_sort->position == TOP_B)
+	{
+		split->max->position = TOP_A;
+		split->mid->position = BOTTOM_A;
+		split->min->position = BOTTOM_B;
+	}
+	else if (to_sort->position == BOTTOM_B)
+	{
+		split->max->position = TOP_A;
+		split->mid->position = BOTTOM_A;
+		split->mid->position = TOP_B;
 	}
 }
-// not in header
+
+void	split_chunk(t_chunk *to_sort, t_split *split)
+{
+	int	size;
+
+	size = to_sort->size;
+	split->max->size = size / 3;
+	split->mid->size = size / 3;
+	split->min->size = size - split->max->size - split->mid->size;
+	assign_position(to_sort, split);
+}
+
 void	sort_chunk(t_chunk *to_sort, t_data *data)
 {
-	t_split	*dest;
+	t_split	split;
 
 	to_top(to_sort, data);
 	if (to_sort->size <= 3)
@@ -53,17 +84,8 @@ void	sort_chunk(t_chunk *to_sort, t_data *data)
 			chunk_sort_1(to_sort, data);
 		return ;
 	}
-	// continue splitting
-	// sort chunk rec for max
-	// sort chunk rec for mid
-	// sort chunk rec for min
-}
-
-t_split	first_split(t_data *data)
-{
-	t_chunk	first_chunk;
-
-	first_chunk.position = TOP_A;
-	first_chunk.size = ft_stacksize(*data->a);
-	sort_chunks(&first_chunk, data);
+	split_chunk(to_sort, &split);
+	sort_chunk(&split.max, data);
+	sort_chunk(&split.mid, data);
+	sort_chunk(&split.min, data);
 }

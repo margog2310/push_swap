@@ -6,22 +6,30 @@
 /*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 21:39:12 by margo             #+#    #+#             */
-/*   Updated: 2024/08/03 21:32:33 by mganchev         ###   ########.fr       */
+/*   Updated: 2024/08/04 18:13:29 by mganchev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-bool	is_sorted(t_stack **stack)
+bool	is_sorted(t_stack **stack, char key)
 {
-	t_stack	*temp;
+	t_stack	*head;
 
-	temp = *stack;
-	while (temp && temp->next)
+	head = *stack;
+	while (head && head->next)
 	{
-		if (temp->value > temp->next->value)
-			return (false);
-		temp = temp->next;
+		if (key == 'a')
+		{
+			if (head->value > head->next->value)
+				return (false);
+		}
+		else if (key == 'b')
+		{
+			if (head->value < head->next->value)
+				return (false);
+		}
+		head = head->next;
 	}
 	return (true);
 }
