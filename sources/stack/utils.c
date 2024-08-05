@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
+/*   By: margo <margo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 01:24:15 by mganchev          #+#    #+#             */
-/*   Updated: 2024/08/05 00:36:58 by mganchev         ###   ########.fr       */
+/*   Updated: 2024/08/05 03:35:12 by margo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 
 int get_rank(t_stack **stack, int rank)
 {
-    int i;
     t_stack *head;
 
-    i = 0;
     head = *stack;
     while (head)
     {

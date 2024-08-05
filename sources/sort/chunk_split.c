@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   chunk_split.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
+/*   By: margo <margo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 00:41:28 by mganchev          #+#    #+#             */
-/*   Updated: 2024/08/05 01:55:54 by mganchev         ###   ########.fr       */
+/*   Updated: 2024/08/05 03:31:43 by margo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,6 @@ t_chunk	init_chunk(int size, enum pos position)
 
 	chunk.size = size;
 	chunk.position = position;
-	chunk.numbers = malloc(sizeof(int) * size);
-	if (!chunk.numbers)
-		return ;
-		
 	return (chunk);
 }
 

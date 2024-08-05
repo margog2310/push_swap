@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
+/*   By: margo <margo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 16:43:53 by mganchev          #+#    #+#             */
-/*   Updated: 2024/08/05 00:38:07 by mganchev         ###   ########.fr       */
+/*   Updated: 2024/08/05 04:22:35 by margo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ void	init_data(t_data **data, int argc, char *argv[])
 	(*data)->b = malloc(sizeof(t_stack));
 	(*data)->ops = malloc(sizeof(t_list));
 	if (!(*data)->a || !(*data)->b || !(*data)->ops)
-		return ;
+		return (free(*data));
 	*((*data)->a) = NULL;
 	*((*data)->b) = NULL;
 	*((*data)->ops) = NULL;
-	fill_stack((*data)->a, argc, argv);
+	fill_stack(*data, (*data)->a, argc, argv);
 }
 
 void	index_stack(t_stack **stack)
@@ -50,7 +50,7 @@ void	index_stack(t_stack **stack)
 	}
 }
 
-void	fill_stack(t_stack **stack, int argc, char *argv[])
+void	fill_stack(t_data *data, t_stack **stack, int argc, char *argv[])
 {
 	int		i;
 	char	**args;
@@ -69,7 +69,8 @@ void	fill_stack(t_stack **stack, int argc, char *argv[])
 	{
 		if (argc == 2)
 			free_arr(args);
-		ft_printf("Error\n");
+		handle_error(data, "Error");
+		return ;
 	}
 	while (args[++i])
 		ft_stackadd_back(stack, ft_stacknew(ft_atoi(args[i])));

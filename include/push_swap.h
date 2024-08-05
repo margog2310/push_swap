@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
+/*   By: margo <margo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 00:56:43 by mganchev          #+#    #+#             */
-/*   Updated: 2024/08/05 01:53:17 by mganchev         ###   ########.fr       */
+/*   Updated: 2024/08/05 04:41:04 by margo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ typedef struct s_chunk
 {
 	enum pos		position;
 	int				size;
-	int				*numbers;
 }					t_chunk;
 
 typedef struct s_split
@@ -69,7 +68,8 @@ bool				is_duplicate(char **args);
 bool				check_args(char **args);
 // stack
 void				init_data(t_data **data, int argc, char *argv[]);
-void				fill_stack(t_stack **stack, int argc, char *argv[]);
+void				fill_stack(t_data *data, t_stack **stack, int argc,
+						char *argv[]);
 void				index_stack(t_stack **stack);
 // instructions
 int					swap(t_stack **stack);
@@ -136,16 +136,17 @@ void				remove_current(t_list **ops, t_list *current,
 int					find_min(t_stack **stack);
 int					find_max(t_stack **stack);
 int					get_rank(t_stack **stack, int rank);
+t_stack				*get_next_node(t_stack *head, enum pos position);
 // lst
 t_stack				*ft_stacknew(int rank);
 void				ft_stackadd_back(t_stack **stack, t_stack *new);
 t_stack				*ft_stacklast(t_stack *stack);
 int					ft_stacksize(t_stack *stack);
-void				free_stack(t_stack **stack);
 // misc
+void				free_stack(t_stack *stack);
 void				free_memory(t_data *data);
 void				free_arr(char **arr);
-void				handle_error(char *error);
+void				handle_error(t_data *data, char *error);
 void				print_stack(t_stack **stack);
 void				print_list(t_list **lst);
 

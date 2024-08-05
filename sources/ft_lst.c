@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lst.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
+/*   By: margo <margo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 18:19:58 by mganchev          #+#    #+#             */
-/*   Updated: 2024/08/05 00:39:07 by mganchev         ###   ########.fr       */
+/*   Updated: 2024/08/05 04:35:42 by margo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,19 +81,14 @@ int	ft_stacksize(t_stack *stack)
 	return (count);
 }
 
-void	free_stack(t_stack **stack)
+void	free_stack(t_stack *stack)
 {
 	t_stack	*tmp;
-	t_stack	*head;
 
-	if (!stack)
-		return ;
-	head = *stack;
-	while (head)
+	while (stack)
 	{
-		tmp = head;
-		head = head->next;
+		tmp = stack;
+		stack = stack->next;
 		free(tmp);
 	}
-	free(stack);
 }

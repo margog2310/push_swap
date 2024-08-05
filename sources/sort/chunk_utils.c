@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   chunk_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
+/*   By: margo <margo@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 18:12:15 by mganchev          #+#    #+#             */
-/*   Updated: 2024/08/05 00:36:58 by mganchev         ###   ########.fr       */
+/*   Updated: 2024/08/05 04:32:30 by margo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	init_split(t_split *split)
 {
 	split = malloc(sizeof(t_split));
 	if (!split)
-		return (handle_error("Error: Memory allocation"));
+		return ;
 	split->max.size = 0;
 	split->mid.size = 0;
 	split->min.size = 0;
@@ -46,10 +46,7 @@ int	chunk_min(t_chunk *chunk, t_data *data)
 	{
 		if (head->rank < min)
 			min = head->rank;
-		if (chunk->position == TOP_A || chunk->position == TOP_B)
-			head = head->next;
-		else if (chunk->position == BOTTOM_A || chunk->position == BOTTOM_B)
-			head = head->prev;
+		head = get_next_node(head, chunk->position);
 	}
 	return (min);
 }
@@ -69,10 +66,7 @@ int	chunk_max(t_chunk *chunk, t_data *data)
 	{
 		if (head->rank > max)
 			max = head->rank;
-		if (chunk->position == TOP_A || chunk->position == TOP_B)
-			head = head->next;
-		else if (chunk->position == BOTTOM_A || chunk->position == BOTTOM_B)
-			head = head->prev;
+		head = get_next_node(head, chunk->position);
 	}
 	return (max);
 }
