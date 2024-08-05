@@ -6,7 +6,7 @@
 /*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 16:29:11 by mganchev          #+#    #+#             */
-/*   Updated: 2024/08/05 00:36:58 by mganchev         ###   ########.fr       */
+/*   Updated: 2024/08/05 23:27:57 by mganchev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,20 @@ int	sort_3_a(t_data *data)
 
 int	sort_4_a(t_data *data)
 {
-	int	min;
+	t_stack	*last;
+	int		min;
 
 	if (is_sorted(data->a, 'a'))
 		return (1);
 	min = find_min(data->a);
-	while ((*data->a)->rank != min)
-		ra(data);
+	last = ft_stacklast(*data->a);
+	if (last->rank == min)
+		rra(data);
+	else
+	{
+		while ((*data->a)->rank != min)
+			ra(data);
+	}
 	if (is_sorted(data->a, 'a'))
 		return (1);
 	pb(data);
@@ -55,13 +62,23 @@ int	sort_4_a(t_data *data)
 
 int	sort_5_a(t_data *data)
 {
-	int	min;
+	t_stack	*last;
+	int		min;
 
 	if (is_sorted(data->a, 'a'))
 		return (1);
 	min = find_min(data->a);
-	while ((*data->a)->rank != min)
-		ra(data);
+	last = ft_stacklast(*data->a);
+	if (last->rank == min || last->prev->rank == min)
+	{
+		while ((*data->a)->rank != min)
+			rra(data);
+	}
+	else
+	{
+		while ((*data->a)->rank != min)
+			ra(data);
+	}
 	if (is_sorted(data->a, 'a'))
 		return (1);
 	pb(data);

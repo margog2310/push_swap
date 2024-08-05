@@ -6,7 +6,7 @@
 /*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 16:00:24 by mganchev          #+#    #+#             */
-/*   Updated: 2024/08/02 23:07:48 by mganchev         ###   ########.fr       */
+/*   Updated: 2024/08/05 19:16:23 by mganchev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "ft_printf.h"
 # include "get_next_line.h"
-# include <limits.h>
+# include "limits.h"
 # include <stddef.h>
 # include <stdint.h>
 # include <stdlib.h>
@@ -34,7 +34,7 @@ int					ft_isascii(int c);
 int					ft_isalnum(int c);
 int					ft_isdigit(int c);
 int					ft_isalpha(int c);
-int					ft_atoi(const char *str);
+long long			ft_atoi(const char *str);
 int					ft_strlen(const char *str);
 int					ft_power(int nb, int power);
 int					ft_puthexnbr(unsigned int nbr, int uppercase);

@@ -6,7 +6,7 @@
 /*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 01:13:34 by mganchev          #+#    #+#             */
-/*   Updated: 2024/08/05 01:57:26 by mganchev         ###   ########.fr       */
+/*   Updated: 2024/08/06 00:15:45 by mganchev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,12 @@ int	main(int argc, char *argv[])
 		exit(EXIT_SUCCESS);
 	}
 	sort_stack(data);
-	print_stack(data->a);
 	free_memory(data);
 	exit(EXIT_SUCCESS);
 }
 /*
 	TO DO:
-			1. use index of elements instead of ranks for sorting
-			2. start implementing sorting algorithm
-				- figure out reranking of the chunks while splitting
-				- try optimising base case for 4 and 5 numbers
-			3. testing + optimisation
-			4. norminette(!) + check memory leaks
+			1. clean up code
+			2. further optimisation??
+			3. final norminette(!) + check memory leaks
 */

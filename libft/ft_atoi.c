@@ -6,14 +6,14 @@
 /*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 18:42:11 by mganchev          #+#    #+#             */
-/*   Updated: 2024/04/12 17:58:38 by mganchev         ###   ########.fr       */
+/*   Updated: 2024/08/05 19:14:55 by mganchev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(const char *str)
+long long	ft_atoi(const char *str)
 {
-	int	nb;
-	int	sign;
+	long long	nb;
+	int			sign;
 
 	nb = 0;
 	sign = 1;

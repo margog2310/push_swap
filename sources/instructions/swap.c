@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: margo <margo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 00:56:31 by mganchev          #+#    #+#             */
-/*   Updated: 2024/08/05 04:23:28 by margo            ###   ########.fr       */
+/*   Updated: 2024/08/05 20:19:25 by mganchev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	swap(t_stack **stack)
 		return (-1);
 	temp = (*stack)->next;
 	if (!temp)
-		ft_printf("Error: Swap\n");
+		ft_putendl_fd("Error: Swap", 1);
 	(*stack)->next = temp->next;
 	(*stack)->prev = temp;
 	if (temp->next)

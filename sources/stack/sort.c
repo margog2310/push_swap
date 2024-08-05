@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: margo <margo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 21:09:25 by mganchev          #+#    #+#             */
-/*   Updated: 2024/08/05 04:28:39 by margo            ###   ########.fr       */
+/*   Updated: 2024/08/05 23:57:33 by mganchev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	apply_op(t_list **ops, char *key)
 {
 	int			i;
 	static t_op	ops_table[] = {{"sa", &sa}, {"sb", &sb}, {"ss", &ss}, {"pa",
-			&pa}, {"pb", &pb}, {"ra", &ra}, {"rb", &rb}, {"rr", &rr}, {"rra",
-			&rra}, {"rrb", &rrb}, {"rrr", &rrr}, {NULL, NULL}};
+		&pa}, {"pb", &pb}, {"ra", &ra}, {"rb", &rb}, {"rr", &rr}, {"rra",
+		&rra}, {"rrb", &rrb}, {"rrr", &rrr}, {NULL, NULL}};
 
 	i = 0;
 	while (ops_table[i].key)
@@ -33,14 +33,27 @@ void	apply_op(t_list **ops, char *key)
 
 void	remove_op(t_list **ops, t_list **head, char *new_op, char *key)
 {
+	t_list	*next_node;
+
 	if (key && new_op)
 	{
 		free(key);
 		(*head)->content = ft_strdup(new_op);
 	}
 	if (ops)
+	{
+		next_node = (*head)->next;
 		remove_current(ops, *head, free);
-	remove_next(*head, free);
+		*head = NULL;
+		*head = next_node;
+	}
+	if (*head && (*head)->next)
+	{
+		next_node = (*head)->next->next;
+		remove_next(*head, free);
+		(*head)->next = NULL;
+		(*head)->next = next_node;
+	}
 	*head = (*head)->next;
 }
 
@@ -73,9 +86,22 @@ void	optimise(t_list **ops)
 	}
 }
 
+void	easy_sort(t_data *data, t_chunk *to_sort)
+{
+	if (to_sort->size <= 5)
+	{
+		if ((to_sort->position == TOP_A || to_sort->position == BOTTOM_A)
+			&& to_sort->size == ft_stacksize(*data->a))
+			simple_sort_a(data, to_sort->size);
+		else if ((to_sort->position == TOP_B || to_sort->position == BOTTOM_B)
+			&& to_sort->size == ft_stacksize(*data->b))
+			simple_sort_b(data, to_sort->size);
+	}
+}
+
 int	sort_stack(t_data *data)
 {
-	int		size;
+	int	size;
 
 	size = ft_stacksize(*data->a);
 	if (size <= 1)
@@ -84,7 +110,8 @@ int	sort_stack(t_data *data)
 		simple_sort_a(data, size);
 	else
 		first_split(data);
-	optimise(data->ops);
 	print_list(data->ops);
 	return (0);
 }
+
+// optimise(data->ops);

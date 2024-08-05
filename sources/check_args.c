@@ -6,7 +6,7 @@
 /*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 21:39:12 by margo             #+#    #+#             */
-/*   Updated: 2024/08/05 00:36:58 by mganchev         ###   ########.fr       */
+/*   Updated: 2024/08/05 19:15:12 by mganchev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ bool	is_number(char **args)
 		i = 0;
 		while (args[j][i])
 		{
+			if (args[j][i] == '-' || args[j][i] == '+')
+				i++;
 			if (!ft_isdigit(args[j][i]))
 				return (false);
 			i++;

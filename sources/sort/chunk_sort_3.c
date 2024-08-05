@@ -6,7 +6,7 @@
 /*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 17:51:28 by mganchev          #+#    #+#             */
-/*   Updated: 2024/08/05 00:36:58 by mganchev         ###   ########.fr       */
+/*   Updated: 2024/08/05 23:50:23 by mganchev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,28 @@
 void	chunk_sort_3(t_chunk *to_sort, t_data *data)
 {
 	if (to_sort->position == TOP_A)
-		sort_3_TA(to_sort, data);
+		sort_3_ta(to_sort, data);
 	else if (to_sort->position == BOTTOM_A)
-		sort_3_BA(to_sort, data);
+		sort_3_ba(to_sort, data);
 	else if (to_sort->position == TOP_B)
-		sort_3_TB(to_sort, data);
+		sort_3_tb(to_sort, data);
 	else if (to_sort->position == BOTTOM_B)
-		sort_3_BB(to_sort, data);
+		sort_3_bb(to_sort, data);
 }
 
-void	sort_3_TA(t_chunk *to_sort, t_data *data)
+void	sort_3_ta(t_chunk *to_sort, t_data *data)
 {
 	int	max;
 
 	max = chunk_max(to_sort, data);
-	if ((*data->a)->rank == max)
+	if ((*data->a)->chunk_rank == max)
 	{
 		sa(data);
 		ra(data);
 		sa(data);
 		rra(data);
 	}
-	else if ((*data->a)->next->rank == max)
+	else if ((*data->a)->next->chunk_rank == max)
 	{
 		ra(data);
 		sa(data);
@@ -46,18 +46,18 @@ void	sort_3_TA(t_chunk *to_sort, t_data *data)
 	chunk_sort_2(to_sort, data);
 }
 
-void	sort_3_TB(t_chunk *to_sort, t_data *data)
+void	sort_3_tb(t_chunk *to_sort, t_data *data)
 {
 	int	max;
 
 	max = chunk_max(to_sort, data);
 	pa(data);
-	if ((*data->b)->rank == max)
+	if ((*data->b)->chunk_rank == max)
 	{
 		pa(data);
 		sa(data);
 	}
-	else if ((*data->b)->next->rank == max)
+	else if ((*data->b)->next->chunk_rank == max)
 	{
 		sb(data);
 		pa(data);
@@ -70,19 +70,19 @@ void	sort_3_TB(t_chunk *to_sort, t_data *data)
 	chunk_sort_2(to_sort, data);
 }
 
-void	sort_3_BA(t_chunk *to_sort, t_data *data)
+void	sort_3_ba(t_chunk *to_sort, t_data *data)
 {
 	int	max;
 
 	max = chunk_max(to_sort, data);
 	rra(data);
 	rra(data);
-	if ((*data->a)->rank == max)
+	if ((*data->a)->chunk_rank == max)
 	{
 		sa(data);
 		rra(data);
 	}
-	else if ((*data->a)->next->rank == max)
+	else if ((*data->a)->next->chunk_rank == max)
 		rra(data);
 	else
 	{
@@ -95,19 +95,19 @@ void	sort_3_BA(t_chunk *to_sort, t_data *data)
 	chunk_sort_2(to_sort, data);
 }
 
-void	sort_3_BB(t_chunk *to_sort, t_data *data)
+void	sort_3_bb(t_chunk *to_sort, t_data *data)
 {
 	int	max;
 
 	max = chunk_max(to_sort, data);
 	rrb(data);
 	rrb(data);
-	if ((*data->b)->rank == max)
+	if ((*data->b)->chunk_rank == max)
 	{
 		pa(data);
 		rrb(data);
 	}
-	else if ((*data->b)->next->rank == max)
+	else if ((*data->b)->next->chunk_rank == max)
 	{
 		sb(data);
 		pa(data);

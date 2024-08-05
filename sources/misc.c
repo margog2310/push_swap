@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   misc.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: margo <margo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 01:44:45 by mganchev          #+#    #+#             */
-/*   Updated: 2024/08/05 04:40:13 by margo            ###   ########.fr       */
+/*   Updated: 2024/08/06 00:00:51 by mganchev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*get_next_node(t_stack *head, enum pos position)
+t_stack	*get_next_node(t_stack *head, enum e_pos position)
 {
 	if (position == TOP_A || position == TOP_B)
 		return (head->next);
@@ -38,6 +38,7 @@ void	free_memory(t_data *data)
 		if (data->ops)
 		{
 			ft_lstclear(data->ops, free);
+			free(data->ops);
 		}
 		free(data);
 	}
@@ -52,11 +53,12 @@ void	free_arr(char **arr)
 		i++;
 	while (i--)
 		free(arr[i]);
+	free(arr);
 }
 
 void	handle_error(t_data *data, char *error)
 {
 	free_memory(data);
-	ft_putendl_fd(error, 1);
-	exit(0);
+	ft_putendl_fd(error, 2);
+	exit(1);
 }

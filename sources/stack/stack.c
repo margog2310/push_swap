@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: margo <margo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 16:43:53 by mganchev          #+#    #+#             */
-/*   Updated: 2024/08/05 04:22:35 by margo            ###   ########.fr       */
+/*   Updated: 2024/08/05 20:07:31 by mganchev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	index_stack(t_stack **stack)
 			head = head->next;
 		}
 		current->rank = rank;
+		current->chunk_rank = rank;
 		current = current->next;
 	}
 }

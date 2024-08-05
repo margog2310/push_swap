@@ -6,7 +6,7 @@
 #    By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/20 18:08:20 by mganchev          #+#    #+#              #
-#    Updated: 2024/08/04 21:58:23 by mganchev         ###   ########.fr        #
+#    Updated: 2024/08/05 20:23:45 by mganchev         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,6 +62,6 @@ fclean:
 re: fclean all
 
 leaks: all
-	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME) $(ARGS)
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME)
 
 .PHONY: all clean fclean re libft leaks

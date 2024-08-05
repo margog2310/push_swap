@@ -6,18 +6,22 @@
 /*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 23:10:12 by mganchev          #+#    #+#             */
-/*   Updated: 2024/08/05 00:36:58 by mganchev         ###   ########.fr       */
+/*   Updated: 2024/08/06 00:01:04 by mganchev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*return_stack(t_data *data, enum pos position)
+t_stack	*return_stack(t_data *data, enum e_pos position)
 {
-	if (position == TOP_A || position == BOTTOM_A)
+	if (position == TOP_A)
 		return (*(data->a));
-	else
+	else if (position == BOTTOM_A)
+		return (ft_stacklast(*(data->a)));
+	else if (position == TOP_B)
 		return (*(data->b));
+	else
+		return (ft_stacklast(*(data->b)));
 }
 
 int	find_min(t_stack **stack)
@@ -67,11 +71,13 @@ void	print_stack(t_stack **stack)
 void	print_list(t_list **lst)
 {
 	t_list	*head;
+	char	*node;
 
 	head = *lst;
 	while (head)
 	{
-		ft_printf("%s\n", head->content);
+		node = head->content;
+		ft_putendl_fd(node, 1);
 		head = head->next;
 	}
 }

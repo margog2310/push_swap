@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   chunk_split.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: margo <margo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 00:41:28 by mganchev          #+#    #+#             */
-/*   Updated: 2024/08/05 03:31:43 by margo            ###   ########.fr       */
+/*   Updated: 2024/08/06 00:02:57 by mganchev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_chunk	init_chunk(int size, enum pos position)
+t_chunk	init_chunk(int size, enum e_pos position)
 {
 	t_chunk	chunk;
 
@@ -54,7 +54,7 @@ void	assign_position(t_chunk *to_sort, t_split *split)
 	{
 		split->max.position = TOP_A;
 		split->mid.position = BOTTOM_A;
-		split->mid.position = TOP_B;
+		split->min.position = TOP_B;
 	}
 }
 
@@ -66,8 +66,9 @@ void	split_chunk(t_data *data, t_chunk *to_sort, t_split *split)
 		return ;
 	init_split(split);
 	size = to_sort->size;
-	split->min.size = split->mid.size = size / 3;
-	split->max.size = size - split->min.size - split->mid.size;
+	split->min.size = size / 3;
+	split->mid.size = size / 3;
+	split->max.size = size - split->mid.size - split->min.size;
 	assign_position(to_sort, split);
 	move_chunks(data, to_sort, split);
 }
@@ -77,6 +78,7 @@ void	sort_chunk(t_chunk *to_sort, t_data *data)
 	t_split	split;
 
 	to_top(to_sort, data);
+	easy_sort(data, to_sort);
 	if (to_sort->size <= 3)
 	{
 		if (to_sort->size == 3)
