@@ -6,7 +6,7 @@
 /*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 17:51:28 by mganchev          #+#    #+#             */
-/*   Updated: 2024/08/04 18:47:11 by mganchev         ###   ########.fr       */
+/*   Updated: 2024/08/05 00:36:58 by mganchev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,14 @@ void	sort_3_TA(t_chunk *to_sort, t_data *data)
 	int	max;
 
 	max = chunk_max(to_sort, data);
-	if ((*data->a)->value == max)
+	if ((*data->a)->rank == max)
 	{
 		sa(data);
 		ra(data);
 		sa(data);
 		rra(data);
 	}
-	else if ((*data->a)->next->value == max)
+	else if ((*data->a)->next->rank == max)
 	{
 		ra(data);
 		sa(data);
@@ -52,12 +52,12 @@ void	sort_3_TB(t_chunk *to_sort, t_data *data)
 
 	max = chunk_max(to_sort, data);
 	pa(data);
-	if ((*data->b)->value == max)
+	if ((*data->b)->rank == max)
 	{
 		pa(data);
 		sa(data);
 	}
-	else if ((*data->b)->next->value == max)
+	else if ((*data->b)->next->rank == max)
 	{
 		sb(data);
 		pa(data);

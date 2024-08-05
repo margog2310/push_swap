@@ -6,7 +6,7 @@
 /*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 18:12:15 by mganchev          #+#    #+#             */
-/*   Updated: 2024/08/04 02:15:58 by mganchev         ###   ########.fr       */
+/*   Updated: 2024/08/05 00:36:58 by mganchev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,15 @@ void	to_top(t_chunk *to_sort, t_data *data)
 	if (to_sort->position == BOTTOM_B
 		&& ft_stacksize(*data->b) == to_sort->size)
 		to_sort->position = TOP_B;
+}
+void	init_split(t_split *split)
+{
+	split = malloc(sizeof(t_split));
+	if (!split)
+		return (handle_error("Error: Memory allocation"));
+	split->max.size = 0;
+	split->mid.size = 0;
+	split->min.size = 0;
 }
 
 int	chunk_min(t_chunk *chunk, t_data *data)
@@ -79,23 +88,15 @@ bool	chunk_is_sorted(t_chunk *chunk, t_data *data)
 	{
 		if (chunk->position == TOP_A || chunk->position == BOTTOM_A)
 		{
-			if (head->value > head->next->value)
+			if (head->rank > head->next->rank)
 				return (false);
 		}
 		else if (chunk->position == TOP_B || chunk->position == BOTTOM_B)
 		{
-			if (head->value < head->next->value)
+			if (head->rank < head->next->rank)
 				return (false);
 		}
 		head = head->next;
 	}
 	return (true);
-}
-
-t_stack	*return_stack(t_data *data, enum pos position)
-{
-	if (position == TOP_A || position == BOTTOM_A)
-		return (data->a);
-	else
-		return (data->b);
 }

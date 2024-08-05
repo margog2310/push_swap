@@ -6,7 +6,7 @@
 /*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 18:19:58 by mganchev          #+#    #+#             */
-/*   Updated: 2024/08/03 23:50:50 by mganchev         ###   ########.fr       */
+/*   Updated: 2024/08/05 00:39:07 by mganchev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ t_stack	*ft_stacknew(int value)
 	new = malloc(sizeof(t_stack));
 	if (!new)
 		return (NULL);
+	new->prev = NULL;
 	new->value = value;
 	new->rank = -1;
 	new->next = NULL;

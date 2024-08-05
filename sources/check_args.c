@@ -6,7 +6,7 @@
 /*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 21:39:12 by margo             #+#    #+#             */
-/*   Updated: 2024/08/04 18:13:29 by mganchev         ###   ########.fr       */
+/*   Updated: 2024/08/05 00:36:58 by mganchev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ bool	is_sorted(t_stack **stack, char key)
 	{
 		if (key == 'a')
 		{
-			if (head->value > head->next->value)
+			if (head->rank > head->next->rank)
 				return (false);
 		}
 		else if (key == 'b')
 		{
-			if (head->value < head->next->value)
+			if (head->rank < head->next->rank)
 				return (false);
 		}
 		head = head->next;

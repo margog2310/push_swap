@@ -6,7 +6,7 @@
 /*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 18:03:44 by mganchev          #+#    #+#             */
-/*   Updated: 2024/08/03 21:36:33 by mganchev         ###   ########.fr       */
+/*   Updated: 2024/08/05 00:48:35 by mganchev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,17 @@
 
 int	reverse_rotate(t_stack **stack)
 {
-	t_stack	*head;
 	t_stack	*last;
+	t_stack	*second_last;
 
 	if (ft_stacksize(*stack) < 2)
 		return (-1);
-	head = *stack;
-	last = ft_stacklast(head);
-	while (head)
-	{
-		if (head->next->next == NULL)
-			head->next = NULL;
-		head = head->next;
-	}
+	last = ft_stacklast(*stack);
+	second_last = last->prev;
+	second_last->next = NULL;
 	last->next = *stack;
+	last->prev = NULL;
+	(*stack)->prev = last;
 	*stack = last;
 	return (0);
 }

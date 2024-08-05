@@ -6,19 +6,26 @@
 /*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 16:43:53 by mganchev          #+#    #+#             */
-/*   Updated: 2024/08/03 21:31:52 by mganchev         ###   ########.fr       */
+/*   Updated: 2024/08/05 00:38:07 by mganchev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	init_data(t_data *data, int argc, char *argv[])
+void	init_data(t_data **data, int argc, char *argv[])
 {
-	data->a = malloc(sizeof(t_stack));
-	data->b = malloc(sizeof(t_stack));
-	fill_stack(data->a, argc, argv);
-	data->b = NULL;
-	data->ops = NULL;
+	*data = malloc(sizeof(t_data));
+	if (!*data)
+		return ;
+	(*data)->a = malloc(sizeof(t_stack));
+	(*data)->b = malloc(sizeof(t_stack));
+	(*data)->ops = malloc(sizeof(t_list));
+	if (!(*data)->a || !(*data)->b || !(*data)->ops)
+		return ;
+	*((*data)->a) = NULL;
+	*((*data)->b) = NULL;
+	*((*data)->ops) = NULL;
+	fill_stack((*data)->a, argc, argv);
 }
 
 void	index_stack(t_stack **stack)

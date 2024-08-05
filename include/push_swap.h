@@ -6,7 +6,7 @@
 /*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 00:56:43 by mganchev          #+#    #+#             */
-/*   Updated: 2024/08/04 18:53:40 by mganchev         ###   ########.fr       */
+/*   Updated: 2024/08/05 01:53:17 by mganchev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,14 @@ typedef struct s_chunk
 {
 	enum pos		position;
 	int				size;
+	int				*numbers;
 }					t_chunk;
 
 typedef struct s_split
 {
-	t_chunk			*min;
-	t_chunk			*mid;
-	t_chunk			*max;
+	t_chunk			min;
+	t_chunk			mid;
+	t_chunk			max;
 }					t_split;
 
 typedef struct s_stack
@@ -50,10 +51,10 @@ typedef struct s_data
 {
 	t_stack			**a;
 	t_stack			**b;
-	t_list			*ops;
+	t_list			**ops;
 }					t_data;
 
-typedef int			(*t_func)(t_data **);
+typedef int			(*t_func)(t_data *);
 
 typedef struct s_op
 {
@@ -67,7 +68,7 @@ bool				in_range(char **args);
 bool				is_duplicate(char **args);
 bool				check_args(char **args);
 // stack
-void				init_data(t_data *data, int argc, char *argv[]);
+void				init_data(t_data **data, int argc, char *argv[]);
 void				fill_stack(t_stack **stack, int argc, char *argv[]);
 void				index_stack(t_stack **stack);
 // instructions
@@ -87,10 +88,11 @@ int					rra(t_data *data);
 int					rrb(t_data *data);
 int					rrr(t_data *data);
 // chunks
-t_chunk				*init_chunk(int size, enum pos position);
-t_split				first_split(t_data *data);
+t_chunk				init_chunk(int size, enum pos position);
+void				init_split(t_split *split);
+void				first_split(t_data *data);
 void				assign_position(t_chunk *to_sort, t_split *split);
-void				split_chunk(t_chunk *to_sort, t_split *split);
+void				split_chunk(t_data *data, t_chunk *to_sort, t_split *split);
 void				sort_chunk(t_chunk *to_sort, t_data *data);
 void				to_top(t_chunk *to_sort, t_data *data);
 void				move_TA(t_data *data, enum pos dest);
@@ -113,6 +115,8 @@ int					sort_5_b(t_data *data);
 int					simple_sort_b(t_data *data, int size);
 int					simple_sort_a(t_data *data, int size);
 int					sort_stack(t_data *data);
+int					get_current_rank(t_stack *head, int size);
+void				move_chunks(t_data *data, t_chunk *to_sort, t_split *split);
 void				chunk_sort_1(t_chunk *to_sort, t_data *data);
 void				chunk_sort_2(t_chunk *to_sort, t_data *data);
 void				chunk_sort_3(t_chunk *to_sort, t_data *data);
@@ -131,14 +135,15 @@ void				remove_current(t_list **ops, t_list *current,
 						void (*del)(void *));
 int					find_min(t_stack **stack);
 int					find_max(t_stack **stack);
-int					get_value(t_stack **stack, int rank);
+int					get_rank(t_stack **stack, int rank);
 // lst
-t_stack				*ft_stacknew(int value);
+t_stack				*ft_stacknew(int rank);
 void				ft_stackadd_back(t_stack **stack, t_stack *new);
 t_stack				*ft_stacklast(t_stack *stack);
 int					ft_stacksize(t_stack *stack);
 void				free_stack(t_stack **stack);
 // misc
+void				free_memory(t_data *data);
 void				free_arr(char **arr);
 void				handle_error(char *error);
 void				print_stack(t_stack **stack);

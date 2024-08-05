@@ -6,7 +6,7 @@
 /*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/30 17:48:41 by mganchev          #+#    #+#             */
-/*   Updated: 2024/08/03 21:38:03 by mganchev         ###   ########.fr       */
+/*   Updated: 2024/08/05 00:47:27 by mganchev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ int	rotate(t_stack **stack)
 	head = *stack;
 	last = ft_stacklast(head);
 	*stack = head->next;
+	(*stack)->prev = NULL;
 	head->next = NULL;
+	head->prev = last;
 	last->next = head;
 	return (0);
 }
@@ -45,7 +47,7 @@ int	rb(t_data *data)
 
 int	rr(t_data *data)
 {
-	if (ft_stacksize(data->a) < 2 || ft_stacksize(*data->b) < 2)
+	if (ft_stacksize(*data->a) < 2 || ft_stacksize(*data->b) < 2)
 		return (-1);
 	rotate(data->a);
 	rotate(data->b);

@@ -6,7 +6,7 @@
 /*   By: mganchev <mganchev@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 18:06:37 by mganchev          #+#    #+#             */
-/*   Updated: 2024/08/04 18:27:14 by mganchev         ###   ########.fr       */
+/*   Updated: 2024/08/05 00:36:58 by mganchev         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,19 @@ int	sort_3_b(t_data *data)
 	if (is_sorted(data->b, 'b'))
 		return (1);
 	min = find_min(data->b);
-	if ((*data->b)->value == min)
+	if ((*data->b)->rank == min)
 	{
 		rb(data);
-		if ((*data->b)->next->value > (*data->b)->value)
+		if ((*data->b)->next->rank > (*data->b)->rank)
 			sb(data);
 	}
-	else if ((*data->b)->next->value == min)
+	else if ((*data->b)->next->rank == min)
 	{
 		rrb(data);
-		if ((*data->b)->value < (*data->b)->next->value)
+		if ((*data->b)->rank < (*data->b)->next->rank)
 			sb(data);
 	}
-	else if ((*data->b)->next->next->value == min)
+	else if ((*data->b)->next->next->rank == min)
 		sb(data);
 	return (0);
 }
@@ -43,7 +43,7 @@ int	sort_4_b(t_data *data)
 	if (is_sorted(data->b, 'b'))
 		return (1);
 	max = find_max(data->b);
-	while ((*data->b)->value != max)
+	while ((*data->b)->rank != max)
 		rb(data);
 	if (is_sorted(data->b, 'b'))
 		return (1);
@@ -60,7 +60,7 @@ int	sort_5_b(t_data *data)
 	if (is_sorted(data->b, 'b'))
 		return (1);
 	max = find_max(data->b);
-	while ((*data->b)->value != max)
+	while ((*data->b)->rank != max)
 		rb(data);
 	if (is_sorted(data->b, 'b'))
 		return (1);
@@ -75,7 +75,7 @@ int	simple_sort_b(t_data *data, int size)
 	if (is_sorted(data->b, 'b'))
 		return (1);
 	if (size == 2)
-		sb(data->b);
+		sb(data);
 	if (size == 3)
 		sort_3_b(data);
 	if (size == 4)
